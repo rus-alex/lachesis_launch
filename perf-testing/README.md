@@ -22,6 +22,7 @@ some practice to run fake network validators on ubuntu servers
 6.  [30.txstorm-install.sh](./30.txstorm-install.sh) INSTALL tx generator for each node.
 7.  [31.txstorm-start.sh](./31.txstorm-start.sh) runs tx generator for each node.
 8.  See TPS with [32.tps-log.sh](./31.tps-log.sh).
+8.  See TTF with [33.ttf-log.sh](./33.ttf-log.sh).
 9.  [70.txstorm-stop.sh](./70.txstorm-stop.sh) stops tx genearators.
 10. [80.fakenet-reset.sh](./80.fakenet-reset.sh) to start again.
 11. [88.total-destroy.sh](./88.total-destroy.sh) for clean.
