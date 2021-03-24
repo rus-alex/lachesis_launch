@@ -1,9 +1,9 @@
-[Stop the node](#stop-the-node)
-[Update your environment](#update-your-environment)
-[Backup](#backup)
-[Checkout new version of go-lachesis](#checkout-new-version-of-go-lachesis)
-[Start up a read only server](#start-up-a-read-only-server)
-[Startup as a validator](#startup-as-a-validator)
+- [Stop the node](#stop-the-node)
+- [Update your environment](#update-your-environment)
+- [Backup](#backup)
+- [Checkout new version of go-lachesis](#checkout-new-version-of-go-lachesis)
+- [Start up a read only server](#start-up-a-read-only-server)
+- [Startup as a validator](#startup-as-a-validator)
 
 This document describes the steps to upgrade a node running go-lachesis v0.7.0-rc1 (v0.7.0-rc2) to the version v1.0.0-rc0.
 

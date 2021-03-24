@@ -1,11 +1,10 @@
-[Installing build tools](#installing-build-tools)
-[Install golang](#install-golang)
-[Installing go-lachesis](#installing-go-lachesis)
-[Installing the Special Fee Contract](#installing-the-special-fee-contract)
-[Creating a validator on the SFC](#create-a-validator-on-the-sfc)
-[Start up a read only server](#start-up-a-read-only-server)
-[Startup as a validator](#startup-as-a-validator)
-Transferring tokens from ERC20 or BEP2 to mainnet
+- [Installing build tools](#installing-build-tools)
+- [Install golang](#install-golang)
+- [Installing go-lachesis](#installing-go-lachesis)
+- [Installing the Special Fee Contract](#installing-the-special-fee-contract)
+- [Creating a validator on the SFC](#create-a-validator-on-the-sfc)
+- [Start up a read only server](#start-up-a-read-only-server)
+- [Startup as a validator](#startup-as-a-validator)
 
 This document shows the steps to set up a validator using the version 1.0.0-rc.0.
 
