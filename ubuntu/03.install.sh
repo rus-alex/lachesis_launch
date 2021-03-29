@@ -6,36 +6,27 @@ set -e
 N=$((NODES-1))
 cd ${SRC}/build/${NAME}
 
-# check prev script 01.keygen.sh is done
-for i in `seq 0 $N`; do
-    if ! [ -d node$i/keystore ]
-    then
-	echo "No keys found. Run 01.keygen.sh first!"
-	exit 1
-    fi
-done
-
-if ! [ -f network.toml ]
-then
-    echo "No keys found. Run 02.network-config.sh first!"
-    exit 1
-fi
-
 
 # copy files to servers
 for i in `seq 0 $N`; do
-    scp -r ./node$i ${NAME}$i:/tmp/lachesis
-    scp ./lachesis ./network.toml ${NAME}$i:/tmp/lachesis/
+#    scp -r ./node$i ${NAME}$i:/tmp/lachesis
+#    scp -r ./lachesis ${NAME}$i:/tmp/lachesis
+    ssh -T ${NAME}$i << CMD
+rm -f /home/lachesis/lachesis/validator.password
+sudo cp /home/ubuntu/validator.password /home/lachesis/lachesis/validator.pswd
+sudo chown lachesis:lachesis /home/lachesis/lachesis/validator.pswd
+CMD
+#sudo killall lachesis
+#sudo mv /tmp/lachesis /home/lachesis/lachesis
+#sudo cp -r /home/ubuntu/.lachesis/* /home/lachesis/lachesis/
+#sudo cp /home/ubuntu/config.toml /home/lachesis/lachesis/testnet.toml
+#sudo chown -R lachesis:lachesis /home/lachesis/lachesis
+#CMD
 done
 
-
-# make dedicated user
-for i in `seq 0 $N`; do
-    ssh ${NAME}$i "sudo useradd lachesis && sudo mv /tmp/lachesis /home/lachesis && sudo chown -R lachesis:lachesis /home/lachesis"
-done
-
+exit 0
 
 # configure and run service
 for i in `seq 0 $N`; do
-    ssh ${NAME}$i "sudo ln -s /home/lachesis/lachesis-node.service /etc/systemd/system/lachesis-node.service && sudo systemctl daemon-reload && sudo systemctl start lachesis-node"
+    ssh ${NAME}$i "sudo ln -s /home/lachesis/lachesis/lachesis-node.service /etc/systemd/system/lachesis-node.service && sudo systemctl daemon-reload && sudo systemctl start lachesis-node"
 done
