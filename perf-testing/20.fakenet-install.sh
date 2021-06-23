@@ -9,18 +9,19 @@ cd ${SRC}/build/${NAME}
 
 # copy files to servers
 for i in `seq 0 $N`; do
-    scp -r ./node$i ${NAME}$i:/tmp/lachesis
-    scp lachesis network.toml test_accs.json ${NAME}$i:/tmp/lachesis/
+    ssh ${NAME}$i "mkdir -p /tmp/opera"
+    scp -r ./node$i/* ${NAME}$i:/tmp/opera
+    scp -r ./opera ${NAME}$i:/tmp/opera/
 done
 
 
 # make dedicated user
 for i in `seq 0 $N`; do
-    ssh ${NAME}$i "sudo useradd lachesis && sudo mv /tmp/lachesis /home/lachesis && sudo chown -R lachesis:lachesis /home/lachesis"
+    ssh ${NAME}$i "sudo useradd opera; sudo mv /tmp/opera /home/opera; sudo chown -R opera:opera /home/opera"
 done
 
 
 # configure and run service
 for i in `seq 0 $N`; do
-    ssh ${NAME}$i "sudo ln -s /home/lachesis/lachesis-node.service /etc/systemd/system/lachesis-node.service && sudo systemctl daemon-reload && sudo systemctl start lachesis-node"
+    ssh ${NAME}$i "sudo ln -s /home/opera/opera-node.service /etc/systemd/system/opera-node.service; sudo systemctl daemon-reload && sudo systemctl restart opera-node"
 done

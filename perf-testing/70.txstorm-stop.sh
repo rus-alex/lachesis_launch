@@ -7,6 +7,6 @@ N=$((NODES-1))
 
 for i in `seq 0 $N`; do
     echo SERVER ${NAME}$i
-    ssh ${NAME}$i "sudo killall tx-storm"
+    ssh ${NAME}$i "sudo killall txsgen"
 done
 

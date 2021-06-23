@@ -7,5 +7,5 @@ N=$((NODES-1))
 
 for i in `seq 0 $N`; do
     echo SERVER ${NAME}$i
-    ssh ${NAME}$i "sudo tail /home/lachesis/tx-storm.log"
+    ssh ${NAME}$i "sudo tail -n 800 /home/opera/nohup.out | grep TPS"
 done
